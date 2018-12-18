@@ -39,7 +39,8 @@ class level1(death):
             else :
                 print("\nWrong Answer")
                 print("Try Again\n")
-                print("Enter again")
+                if health!=0:
+                    print("Enter again")
                 self.death.health-=20
         if self.death.health<=0:
             print("You used up all of your life")
@@ -87,7 +88,7 @@ class level3(death):
     def enter(self):
         words=['range','quick','quilt','crazy','joker']
         chance=0
-        hint_answers=["Area of variation between lower limit and upper limit","Synonym of fast","Warm bed covering","Synonym of Mad","Person who make others laugh"]
+        hint_answers=["Area of variation between lower limit and upper limit","Synonym of fast","It is used in winter season","Synonym of Mad","Person who make others laugh"]
         ch=random.randint(0,4)
         correct=words[ch]
         answer=correct
@@ -100,7 +101,7 @@ class level3(death):
         print("You can ask for hint any time by typing 'hint' ")
         print("But you can use hint only once\n")
         print("If you want to see the letters that you have guessed correctly.Type 'show'")
-        print("If you want to see this info again type 'help'\n")
+        print("If you want to see this information again type 'help'\n")
         while self.death.health>0:
             print("Enter a letter")
             guess_w=input("> ")
@@ -115,7 +116,7 @@ class level3(death):
                 print("You can ask for hint any time by typing 'hint' ")
                 print("But you can you hint only once\n")
                 print("If you want to see the letters that you have guessed correctly.Type 'show'")
-                print("If you want to see this info again type 'help'\n")
+                print("If you want to see this information again type 'help'\n")
 
             elif guess_w=='show' and chance==1:
                 print("The letters which you have guessed correctly are ",guess,'\n')
@@ -140,7 +141,7 @@ class level3(death):
             if len(guess)==5 :
                 break
 
-        if health<=0:
+        if self.death.health<=0:
             print("\nYou used up all of your life\n")
             return self.death.gameov()
         else:
@@ -153,7 +154,7 @@ class level3(death):
             guess_w=input("> ")
             if answer==guess_w:
                 print("\nYou have guessed word correctly\n")
-                print("Voila!!! You have completed this game")
+                print("Voila!!! You have completed this game.")
                 input("Press Enter to continue.\n")
                 break
             elif guess_w=='health':
@@ -163,7 +164,7 @@ class level3(death):
                 print("Try again\n")
                 self.death.health-=5
 
-        if health<=0:
+        if self.death.health<=0:
             print("\nYou used up all of your life")
             return self.death.gameov()
 
